@@ -1,34 +1,22 @@
 package com.logitech.steps;
 
 import com.logitech.helper.BrowserHelper;
-import com.logitech.helper.DriverHelper;
 import com.logitech.pages.DragAndDropPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import lombok.RequiredArgsConstructor;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.TimeUnit;
 
+@RequiredArgsConstructor
 public class DragAndDropStepDef {
 
-    private WebDriver driver;
-
-    @Autowired
-    private DragAndDropPage dragAndDropPage;
-
-    @Autowired
-    private BrowserHelper browserHelper;
-
-    @Autowired
-    DriverHelper driverHelper;
-
-    public DragAndDropStepDef(DriverHelper helper,DragAndDropPage dragAndDropPage,BrowserHelper browserHelper){
-        this.driver = driverHelper.getDriver();
-//        this.dragAndDropPage=dragAndDropPage;
-//        this.browserHelper=browserHelper;
-    }
+    private final WebDriver driver;
+    private final DragAndDropPage dragAndDropPage;
+    private final BrowserHelper browserHelper;
 
     @Then("I drag box A to box B")
     public void dragAtoB() {

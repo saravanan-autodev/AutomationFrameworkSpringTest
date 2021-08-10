@@ -1,7 +1,7 @@
 package com.logitech.pages;
 
-import com.logitech.helper.DriverHelper;
 //import io.cucumber.spring.ScenarioScope;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,19 +13,17 @@ import javax.annotation.PostConstruct;
 
 @Component
 //@ScenarioScope
+@RequiredArgsConstructor
 public class WindowPage {
 
-    @Autowired
-    DriverHelper driverHelper;
+    private final WebDriver driver;
 
     @FindBy(linkText = "Click Here")
     WebElement clickHere;
 
-    private WebDriver driver;
 
     @PostConstruct
     public void init() {
-        this.driver = driverHelper.getDriver();
         PageFactory.initElements(driver, this);
     }
 

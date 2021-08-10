@@ -1,6 +1,5 @@
 package com.logitech.steps;
 
-import com.logitech.helper.DriverHelper;
 import com.logitech.helper.PropertyUtil;
 import com.logitech.helper.RestUtil;
 import com.logitech.helper.UrlUtil;
@@ -8,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
+import lombok.RequiredArgsConstructor;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +21,13 @@ import java.util.concurrent.TimeUnit;
 
 
 //@CucumberContextConfiguration
+@RequiredArgsConstructor
 @SpringBootTest(classes = TestConfiguration.class)
 public class APIStepDef {
 
-    @Autowired
-    DriverHelper driverHelper;
-
-    private WebDriver driver;
+    private final WebDriver driver;
 
     private Response response;
-
-
-
-    public APIStepDef(){
-        this.driver = driverHelper.getDriver();
-    }
 
     @Given("I invoke Nakuri URL")
     public void invokeNaukriStep() {

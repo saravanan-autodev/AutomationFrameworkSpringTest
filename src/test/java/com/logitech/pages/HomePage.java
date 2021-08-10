@@ -1,7 +1,7 @@
 package com.logitech.pages;
 
-import com.logitech.helper.DriverHelper;
 //import io.cucumber.spring.ScenarioScope;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,12 +15,10 @@ import javax.annotation.PostConstruct;
 
 @Component
 //@ScenarioScope
+@RequiredArgsConstructor
 public class HomePage {
 
-    @Autowired
-    DriverHelper driverHelper;
-
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(linkText = "Form Authentication")
     WebElement formAuthentication;
@@ -42,7 +40,6 @@ public class HomePage {
 
     @PostConstruct
     private void init() {
-        this.driver = driverHelper.getDriver();
         PageFactory.initElements(driver, this);
     }
 

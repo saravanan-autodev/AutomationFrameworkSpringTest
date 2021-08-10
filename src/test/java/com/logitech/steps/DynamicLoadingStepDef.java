@@ -1,23 +1,16 @@
 package com.logitech.steps;
 
-import com.logitech.helper.DriverHelper;
 import com.logitech.pages.DynamicLoadingPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import lombok.RequiredArgsConstructor;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@RequiredArgsConstructor
 public class DynamicLoadingStepDef {
 
-    @Autowired
-    private DynamicLoadingPage dynamicLoadingPage;
-
-    @Autowired
-    private DriverHelper driverHelper;
-
-    public DynamicLoadingStepDef(DriverHelper helper, DynamicLoadingPage dynamicLoadingPage){
-//        this.dynamicLoadingPage=dynamicLoadingPage;
-    }
+    private final DynamicLoadingPage dynamicLoadingPage;
 
     @Then("I click on {string} in Dynamic Loading page")
     public void clickOnExample2(String link) {

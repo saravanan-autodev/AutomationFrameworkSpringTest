@@ -1,33 +1,31 @@
 package com.logitech.springtest;
 
 import com.logitech.constants.EnvironmentConstants;
-import com.logitech.helper.DriverHelper;
-import com.logitech.helper.PropertyUtil;
 import com.logitech.pages.HomePage;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-//import static com.logitech.constants.EnvironmentConstants.HEROKUAPP_URL;
+import org.springframework.stereotype.Component;
 
 @SpringBootTest
 public class SpringTestRunner {
 
     @Autowired
-    DriverHelper driverHelper;
+    private WebDriver driver;
 
     @Autowired
-    EnvironmentConstants environmentConstants;
+    private EnvironmentConstants environmentConstants;
 
     @Autowired
-    HomePage homePage;
+    private HomePage homePage;
 
     @Test
     public void loadUrl(){
-        System.out.println("URL"+environmentConstants.HEROKUAPP_URL);
-        driverHelper.getDriver().get(environmentConstants.HEROKUAPP_URL);
+        System.out.println("URL"+environmentConstants.getHerokuappUrl());
+        driver.get(environmentConstants.getHerokuappUrl());
         homePage.clickOnHyperLink("Form Authentication");
     }
-
 
 }

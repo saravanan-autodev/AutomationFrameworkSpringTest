@@ -1,11 +1,11 @@
 package com.logitech.steps;
 
 import com.logitech.helper.BrowserHelper;
-import com.logitech.helper.DriverHelper;
 import com.logitech.helper.PropertyUtil;
 import com.logitech.pages.WindowPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,24 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 //import static com.logitech.constants.BootStrapConstants.PAGE_LOAD_WAIT;
 
+@RequiredArgsConstructor
 public class WindowStepDef {
 
-    @Autowired
     private WindowPage windowPage;
-
-    @Autowired
     private BrowserHelper browserHelper;
-
-    @Autowired
-    DriverHelper driverHelper;
-
     private WebDriver driver;
-
-    public WindowStepDef(DriverHelper helper, WindowPage windowPage, BrowserHelper browserHelper){
-        this.driver = driverHelper.getDriver();
-//        this.windowPage=windowPage;
-//        this.browserHelper=browserHelper;
-    }
 
     @Then("I click on {string} on windows page")
     public void clickOnClickHere(String linkText) {

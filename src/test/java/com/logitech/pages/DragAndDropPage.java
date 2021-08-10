@@ -1,6 +1,7 @@
 package com.logitech.pages;
 
-import com.logitech.helper.DriverHelper;
+//import com.logitech.helper.DriverHelper;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,12 +14,10 @@ import javax.annotation.PostConstruct;
 
 @TestComponent
 //@ScenarioScope
+@RequiredArgsConstructor
 public class DragAndDropPage {
 
-    @Autowired
-    DriverHelper driverHelper;
-
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(id = "column-a")
     public WebElement BoxA;
@@ -28,7 +27,6 @@ public class DragAndDropPage {
 
     @PostConstruct
     public void init() {
-        this.driver = driverHelper.getDriver();
         PageFactory.initElements(driver, this);
     }
 

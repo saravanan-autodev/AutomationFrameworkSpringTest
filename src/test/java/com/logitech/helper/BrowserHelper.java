@@ -2,6 +2,7 @@ package com.logitech.helper;
 
 import io.cucumber.java.Scenario;
 //import io.cucumber.spring.ScenarioScope;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,21 +11,10 @@ import javax.annotation.PostConstruct;
 
 @Component
 //@ScenarioScope
+@RequiredArgsConstructor
 public class BrowserHelper {
 
-    @Autowired
-    DriverHelper driverHelper;
-
-    private WebDriver driver;
-
-//    public BrowserHelper() {
-//        this.driver = driverHelper.getDriver();
-//    }
-
-    @PostConstruct
-    public void init(){
-        this.driver = driverHelper.getDriver();
-    }
+    private final WebDriver driver;
 
     public String getTheUrlOfNewTab() {
         String currentWindowTitle = driver.getTitle();

@@ -1,33 +1,32 @@
 package com.logitech.hooks;
 
 import com.logitech.helper.BrowserHelper;
-import com.logitech.helper.DriverHelper;
 import io.cucumber.java.Scenario;
+import lombok.RequiredArgsConstructor;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class Hooks {
 
-    @Autowired
-    private DriverHelper driverHelper;
+    private final WebDriver driver;
+    private final BrowserHelper browserHelper;
+    //private final Scenario scenario;
 
-    @Autowired
-    private BrowserHelper browserHelper;
 
-//    @Autowired
-    Scenario scenario;
 
 //    @Before
     public void init() {
-        driverHelper.getDriver().manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
 
 //    @After
     public void afterHook() {
-        browserHelper.takeScreenshotOnFailure(scenario);
-        driverHelper.getDriver().quit();
+        //browserHelper.takeScreenshotOnFailure(scenario);
+        driver.quit();
     }
 
 }
